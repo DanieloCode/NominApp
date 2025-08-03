@@ -35,6 +35,8 @@ Mostrar los nuevos Sueldos Promedio para los trabajadores con Bono adicional. --
         </div>
     </header>
     <main>
+        <!-- contenedor del registro de empleados-->
+
         <div class="registro-container">
             <div class="registro-trabajadores">
                 <h1>Registro</h1>
@@ -42,13 +44,44 @@ Mostrar los nuevos Sueldos Promedio para los trabajadores con Bono adicional. --
                 <input type="text" id="registroTrabajadores" placeholder="Ingresa Nombre" required><br>
                 <label for="registroEstudio">Nivel de estudio:</label>
                 <input type="text" id="registroEstudio" placeholder="Nivel estudio" required><br>
-                <input type="submit" value="Registar trabajador" class="submit" id="botonSubmit">
+                <input type="submit" value="Registar trabajador" class="submit" id="botonSubmit-registro">
             </div>
-            <div class="Mostrar-Trabajador">
-                <h1>Trabajadores Registrados</h1>
-                <div id="listaTrabajadores" class="lista-trabajadores"></div>
+            <!-- Botón y tabla Trabajo -->
+            <div class="tabla-container">
+                <div class="Buttons">
+                    <button class="button" id="mostrarGeneral">General</button>
+                    <button class="button" id="mostrarTecnico">Tecnico</button>
+                    <button class="button" id="mostrarUniversitario">Universitario</button>
+                    <button class="button" id="mostrarTitulado">Titulado</button>
+                    <button class="button" id="mostrarMagister">Magister</button>
+                    <h1>Tabla de Nómina</h1>
+                </div>
+                <table class="body-table" id="tablaTrabajadores">
+                    <thead id="encabezadoTabla">
+                        <!-- Encabezado -->
+
+                    </thead>
+                    <tbody id="cuerpoTabla">
+                        <!-- Aquí se insertan filas -->
+                    </tbody>
+                    <tfoot id="pieTabla">
+                        <!-- pie -->
+                    </tfoot>
+                </table>
+            </div>
+            <!--Contenedor retiro de empleados-->
+            <div class="retiro-trabajadores">
+                <h1>Retiro</h1>
+                <label for="retiroTrabajadores">Retirar Trabajador:</label>
+                <input type="text" id="retiroTrabajadores" placeholder="Ingresa Nombre" required><br>
+                <br>
+                <input type="submit" value="Retirar trabajador" class="submit" id="botonSubmit-retiro">
             </div>
         </div>
+
+
+
+
     </main>
 
     <footer>

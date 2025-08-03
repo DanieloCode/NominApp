@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tabla desde Firebase</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 8px;
+        }
+
+        #tablaUsuarios {
+            display: none;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button onclick="mostrarTabla()">Mostrar tabla</button>
+
+    <table id="tablaUsuarios">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Edad</th>
+                <th>Ciudad</th>
+            </tr>
+        </thead>
+        <tbody id="cuerpoTabla">
+            <!-- Aquí se insertarán los datos -->
+        </tbody>
+    </table>
+
+    <script type="module">
+        // Tu configuración de Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "TU_API_KEY",
+            authDomain: "TU_AUTH_DOMAIN",
+            projectId: "TU_PROJECT_ID",
+            storageBucket: "TU_STORAGE_BUCKET",
+            messagingSenderId: "TU_SENDER_ID",
+            appId: "TU_APP_ID"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        async function mostrarTabla() {
+            const tabla = document.getElementById("tablaUsuarios");
+            const cuerpo = document.getElementById("cuerpoTabla");
+
+            // Limpiar tabla por si ya tiene datos
+            cuerpo.innerHTML = "";
+
+            // Leer los documentos de la colección "usuarios"
+            const querySnapshot = await getDocs(collection(db, "usuarios"));
+
+            querySnapshot.forEach((doc) => {
+                const data = doc.data();
+                const fila = `
+          <tr>
+            <td>${data.nombre}</td>
+            <td>${data.edad}</td>
+            <td>${data.ciudad}</td>
+          </tr>`;
+                cuerpo.innerHTML += fila;
+            });
+
+            tabla.style.display = "table";
+        }
+    </script>
+
+</body>
+
+</html>

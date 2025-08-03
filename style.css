@@ -1,27 +1,32 @@
 :root {
-  /* Colores principales */
-  --primary-color: #1A237E;     /* Azul marino */
-  --secondary-color: #3949AB;   /* Azul medio */
-  --accent-color: #43A047;      /* Verde éxito */
+    /* Colores principales */
+    --primary-color: #1A237E;
+    /* Azul marino */
+    --secondary-color: #3949AB;
+    /* Azul medio */
+    --accent-color: #43A047;
+    /* Verde éxito */
 
-  /* Grises y fondo */
-  --background-color: #F4F6F8;  /* Gris claro */
-  --surface-color: #FFFFFF;     /* Fondo de tarjetas */
-  --border-color: #E0E0E0;
+    /* Grises y fondo */
+    --background-color: #F4F6F8;
+    /* Gris claro */
+    --surface-color: #FFFFFF;
+    /* Fondo de tarjetas */
+    --border-color: #E0E0E0;
 
-  /* Tipografía */
-  --text-color: #212121;
-  --text-muted: #757575;
+    /* Tipografía */
+    --text-color: #212121;
+    --text-muted: #757575;
 
-  /* Estados */
-  --success-color: #66BB6A;
-  --error-color: #E53935;
-  --warning-color: #FBC02D;
+    /* Estados */
+    --success-color: #66BB6A;
+    --error-color: #E53935;
+    --warning-color: #FBC02D;
 }
 
 body {
-  background-color: var(--background-color);
-  color: var(--text-color);
+    background-color: var(--background-color);
+    color: var(--text-color);
     margin: 0;
     padding: 0;
 }
@@ -89,11 +94,12 @@ footer {
     flex-direction: row;
     gap: 35px;
     margin: 20px;
-    
 }
 
 /* Sección de registro */
 .registro-trabajadores {
+    height: 280px;
+    margin-top: 110px;
     display: flex;
     flex-direction: column;
     background-color: var(--surface-color);
@@ -109,7 +115,7 @@ footer {
     text-align: center;
     border-radius: 5px;
     font-size: 1.5rem;
-    
+
 }
 
 .registro-trabajadores label {
@@ -142,6 +148,61 @@ footer {
     color: var(--success-color);
 }
 
+/* Sección de retiro */
+.retiro-trabajadores {
+    height: 280px;
+    margin-top: 110px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--surface-color);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.699);
+}
+
+.retiro-trabajadores h1 {
+    background-color: var(--background-color);
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 1.5rem;
+}
+
+.retiro-trabajadores label {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: var(--primary-color);
+}
+
+.retiro-trabajadores input {
+
+    border: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+/* Botón de envío */
+input[type="submit"][value="Retirar trabajador"] {
+    color: var(--text-color);
+    font-weight: bold;
+    border: none;
+    background-color: var(--background-color);
+    justify-content: center;
+    padding: 5px;
+    margin: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: -20px;
+    font-size: 1rem;
+}
+
+.submit:hover {
+    box-shadow: 0 2px 4px var(--success-color);
+    color: var(--success-color);
+}
+
 /* Lista de trabajadores */
 .listaTrabajadores {
     background-color: var(--surface-color);
@@ -150,4 +211,62 @@ footer {
     font-weight: bold;
     margin: 0;
     border-radius: 20px;
+}
+
+.body-table table {
+    width: 80%;
+    margin: auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.body-table th,
+td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.body-table th {
+    background-color: var(--secondary-color);
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.body-table tr:hover {
+    background-color: #f1f7ff;
+}
+
+.body-table caption {
+    caption-side: top;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+}
+
+.tabla-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.tabla-container h1 {
+    margin-top: -2px;
+    margin-left: 70px;
+}
+
+.Buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    height: 40px;
+}
+
+.button {
+    background-color: var(--secondary-color);
+    border-radius: 10px;
 }
