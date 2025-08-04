@@ -42,13 +42,15 @@ botonRetiro.addEventListener('click', async () => {
             alert('No se encontró un trabajador con ese nombre.');
             return;
         }
-        querySnapshot.forEach(async (docSnap) => {
+        let eliminado = false;
+        for (const docSnap of querySnapshot.docs) {
             await deleteDoc(doc(db, 'trabajadores', docSnap.id));
-            encontrado = true;
-        });
-        if (encontrado) {
+            eliminado = true;
+        }
+        if (eliminado) {
             alert('Trabajador retirado correctamente.');
             retiroTrabajadores.value = '';
+            retiroTrabajadores.placeholder = 'Ingresa Nombre';
         }
     });
 });
@@ -295,7 +297,7 @@ botonMostrarTablaT.addEventListener('click', async () => {
             let total = 0;
             snapshot.forEach((doc) => {
                 const data = doc.data();
-                if (data.pago && data.sueldo && data.nivel === "tecnico") {
+                if (data.pago && data.sueldo && data.nivel.trim().toLowerCase() === "tecnico") {
                     const fila = document.createElement('tr');
                     fila.innerHTML = `
                         <td>${contador}</td>
@@ -320,7 +322,9 @@ botonMostrarTablaT.addEventListener('click', async () => {
         });
     }
 });
-
+/*--------------------------------------------------------------
+Boton Universitario__Tabla
+--------------------------------------------------------------*/
 botonMostrarTablaU.addEventListener('click', async () => {
     // Alterna la visibilidad de la tabla al hacer clic
     if (tabla.style.display === 'table') {
@@ -349,7 +353,7 @@ botonMostrarTablaU.addEventListener('click', async () => {
             let total = 0;
             snapshot.forEach((doc) => {
                 const data = doc.data();
-                if (data.pago && data.sueldo && data.nivel === "universitario") {
+                if (data.pago && data.sueldo && data.nivel.trim().toLowerCase() === "universitario") {
                     const fila = document.createElement('tr');
                     fila.innerHTML = `
                         <td>${contador}</td>
@@ -374,7 +378,9 @@ botonMostrarTablaU.addEventListener('click', async () => {
         });
     }
 });
-
+/*--------------------------------------------------------------
+Boton Titulado__Tabla
+--------------------------------------------------------------*/
 botonMostrarTablaTi.addEventListener('click', async () => {
     // Alterna la visibilidad de la tabla al hacer clic
     if (tabla.style.display === 'table') {
@@ -403,7 +409,7 @@ botonMostrarTablaTi.addEventListener('click', async () => {
             let total = 0;
             snapshot.forEach((doc) => {
                 const data = doc.data();
-                if (data.pago && data.sueldo && data.nivel === "titulado") {
+                if (data.pago && data.sueldo && data.nivel.trim().toLowerCase() === "titulado") {
                     const fila = document.createElement('tr');
                     fila.innerHTML = `
                         <td>${contador}</td>
@@ -428,7 +434,9 @@ botonMostrarTablaTi.addEventListener('click', async () => {
         });
     }
 });
-
+/*--------------------------------------------------------------
+Boton magister__Tabla
+--------------------------------------------------------------*/
 botonMostrarTablaM.addEventListener('click', async () => {
     // Alterna la visibilidad de la tabla al hacer clic
     if (tabla.style.display === 'table') {
@@ -457,7 +465,7 @@ botonMostrarTablaM.addEventListener('click', async () => {
             let total = 0;
             snapshot.forEach((doc) => {
                 const data = doc.data();
-                if (data.pago && data.sueldo && data.nivel === "magister") {
+                if (data.pago && data.sueldo && data.nivel.trim().toLowerCase() === "magister") {
                     const fila = document.createElement('tr');
                     fila.innerHTML = `
                         <td>${contador}</td>
